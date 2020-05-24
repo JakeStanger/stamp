@@ -31,16 +31,13 @@ impl Command {
                 for template in extra_templates {
                     let template_name = template.file_name().unwrap().to_str().unwrap().to_string();
 
-                    if !templates.contains_key(&template_name) {
-                        templates.insert(template_name, template);
-                    }
+                    templates.entry(template_name).or_insert(template);
                 }
             }
 
             if !global {
-                let parent = path.parent();
-                if parent.is_some() {
-                    Command::read_templates(&parent.unwrap(), templates, global);
+                if let Some(parent) = path.parent() {
+                    Command::read_templates(parent, templates, global);
                 }
             }
         }

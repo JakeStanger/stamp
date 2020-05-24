@@ -107,7 +107,7 @@ impl Command {
         let mut name_handlebars = Handlebars::new();
         setup_handlebars(&mut name_handlebars);
 
-        for (name, _template) in handlebars.get_templates() {
+        for name in handlebars.get_templates().keys() {
             name_handlebars
                 .register_template_string(name, name)
                 .unwrap();
@@ -126,7 +126,7 @@ impl Command {
                 .filter(|param| !context.contains_key(param))
                 .collect();
 
-            if missing_parameters.len() > 0 {
+            if !missing_parameters.is_empty() {
                 Command::collect_missing_parameters(missing_parameters, context);
             }
 
@@ -141,7 +141,7 @@ impl Command {
     /// Takes a template name
     /// and runs the template.
     pub fn run(
-        template: &String,
+        template: &str,
         context: &Option<Vec<(String, String)>>,
         out: &Option<PathBuf>,
     ) -> Result<(), String> {
@@ -162,8 +162,6 @@ impl Command {
 
 #[cfg(test)]
 mod tests {
-    use std::path::Path;
-
     use super::*;
 
     fn get_handlebars(dir_path: &str) -> Handlebars {
@@ -214,7 +212,7 @@ mod tests {
             &PathBuf::from(".stamp/templates/test"),
             &mut context,
             PathBuf::from("/tmp/stamp"),
-        );
+        ).unwrap();
 
         assert!(PathBuf::from("/tmp/stamp/Hello").exists());
         assert_eq!(fs::read_to_string("/tmp/stamp/Hello").unwrap(), "world");

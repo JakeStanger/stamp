@@ -20,7 +20,7 @@ fn create_dirs() -> std::io::Result<()> {
 /// Runs the function associated with a CLI subcommand
 fn run_command(command: &Command) -> Result<(), String> {
     match command {
-        Command::List { verbose } => Command::list(verbose.clone()),
+        Command::List { verbose } => Command::list(*verbose),
         Command::Run {
             template,
             context,
