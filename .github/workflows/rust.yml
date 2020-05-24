@@ -34,9 +34,12 @@ jobs:
         args: --verbose
         token: ${{ secrets.GITHUB_TOKEN }}
   release:
+    if: success()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      
+      # create github release
       - name: Create a Release
         uses: actions/create-release@v1
         with:
@@ -44,9 +47,15 @@ jobs:
           tag_name: v${{ github.ref }}
           # The name of the release. For example, `Release v1.0.1`
           release_name: v${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      # crates.io login  
       - name: Log in to Crates.io
         run: cargo login ${CRATES_IO_TOKEN}
         env:
           CRATES_IO_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
+      
+      #crates.io publish
       - name: Publish to Crates.io
         run: cargo publish
