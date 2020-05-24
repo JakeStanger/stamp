@@ -22,14 +22,17 @@ jobs:
     - name: Run tests
       run: cargo test --verbose
     
+    # install clippy
+    - name: Install clippy
+      run: rustup component add clippy
+    
     # lint
     - name: Run clippy
       uses: actions-rs/clippy-check@v1.0.5
       with:
         # Arguments for the cargo command
         args: --verbose
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
   release:
     runs-on: ubuntu-latest
     steps:
