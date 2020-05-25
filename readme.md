@@ -1,5 +1,7 @@
 # Stamp
 
+![Rust](https://github.com/JakeStanger/stamp/workflows/Pipeline/badge.svg)
+
 A command line tool for creating one or more files from templates, written in Rust.
 
 Stamp was born out of a lack of tooling that filled this middle ground:
