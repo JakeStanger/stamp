@@ -1,6 +1,6 @@
 [package]
 name = "stamp-templates"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Jake Stanger <mail@jstanger.dev>"]
 edition = "2018"
 description = "A command line tool for creating one or more files from templates."
