@@ -1,5 +1,5 @@
 [package]
-name = "stamp"
+name = "stampr"
 version = "0.1.2"
 authors = ["Jake Stanger <mail@jstanger.dev>"]
 edition = "2018"

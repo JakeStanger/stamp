@@ -14,27 +14,29 @@ Stamp was born out of a lack of tooling that filled this middle ground:
 You will require rust and cargo installed.
 
 ```bash
-cargo install stamp-templates
+cargo install stampr
 ```
 
 Annoyingly the crate name `stamp` was already taken.
+
+You might want to `alias=stamp=stampr`.
 
 ## Usage
 
 ### Command Line Usage
 
-Command line help can be viewed using `stamp -h` or `stamp --help` for more detail.
+Command line help can be viewed using `stampr -h` or `stampr --help` for more detail.
 
-You can also use `stamp help <command>`.
+You can also use `stampr help <command>`.
 
 #### List
 
-`stamp list` will show a list of installed templates. 
+`stampr list` will show a list of installed templates. 
 Passing the `-v` flag will also show the path of each template on disk.
 
 #### Run
 
-`stamp run <template>` will render a template and create the files.
+`stampr run <template>` will render a template and create the files.
 
 By default, files are written relative to your current working directory. 
 To change this, use `-o` or `--out`. 
@@ -48,7 +50,7 @@ This must be the last flag provided.
 Example:
 
 ```bash
-stamp run test --out /tmp/stamp-test -c greeting=Hello subject=World
+stampr run test --out /tmp/stamp-test -c greeting=Hello subject=World
 ```
 
 ### Creating Templates
@@ -133,7 +135,7 @@ And the third can remain empty.
 
 Now run your template:
 ```bash
-stamp run tsx-component -c name=testComponent
+stampr run tsx-component -c name=testComponent
 ```
 
 You should see a directory created called `testComponent` with 3 files inside.
