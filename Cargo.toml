@@ -1,11 +1,11 @@
 [package]
 name = "stamp-templates"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Jake Stanger <mail@jstanger.dev>"]
 edition = "2018"
 description = "A command line tool for creating one or more files from templates."
 license = "MIT"
-repository = "https://github.com/JakeStanger/mpd-discord-rpc"
+repository = "https://github.com/JakeStanger/stamp"
 readme = "README.md"
 keywords = ["template", "handlebars", "cli"]
 
