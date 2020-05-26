@@ -19,7 +19,7 @@ cargo install stampr
 
 Annoyingly the crate name `stamp` was already taken.
 
-You might want to `alias=stamp=stampr`.
+You might want to `alias stamp=stampr`.
 
 ## Usage
 
